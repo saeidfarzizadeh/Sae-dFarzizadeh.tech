@@ -74,7 +74,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} ${vazirmatn.variable} h-full antialiased`}
     >
       <body
-        className="flex min-h-full flex-col bg-background text-foreground"
+        className="site-bg flex min-h-full flex-col text-foreground"
         style={{
           fontFamily:
             locale === "fa"

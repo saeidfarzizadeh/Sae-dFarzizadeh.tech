@@ -35,21 +35,28 @@ export async function Header() {
   }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/80 backdrop-blur-md dark:border-neutral-800/80 dark:bg-neutral-950/80">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
-        <Link
-          href="/"
-          className="font-display shrink-0 text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50"
-        >
-          {t("brand")}
+    <header className="glass-header sticky top-0 z-50">
+      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-6">
+        <Link href="/" className="group flex shrink-0 items-center gap-2.5">
+          <span
+            className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white shadow-md"
+            style={{
+              background: "linear-gradient(135deg, var(--accent), #7c3aed)",
+            }}
+          >
+            P
+          </span>
+          <span className="font-display text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">
+            {t("brand")}
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-4 xl:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -78,18 +85,18 @@ function MobileNav({
     <details className="group relative xl:hidden">
       <summary
         className={cn(
-          "cursor-pointer list-none text-sm font-medium text-neutral-700 dark:text-neutral-300",
+          "flex h-9 cursor-pointer list-none items-center rounded-full border border-border-subtle bg-surface px-3.5 text-sm font-medium text-foreground",
           "[&::-webkit-details-marker]:hidden",
         )}
       >
         {menuLabel}
       </summary>
-      <nav className="absolute end-0 z-50 mt-3 max-h-[70vh] w-52 overflow-y-auto rounded-xl border border-neutral-200 bg-white p-2 shadow-lg dark:border-neutral-800 dark:bg-neutral-900">
+      <nav className="absolute end-0 z-50 mt-2 max-h-[70vh] w-56 overflow-y-auto rounded-2xl border border-border-subtle bg-surface p-2 shadow-[var(--shadow-card)]">
         {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="block rounded-lg px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+            className="block rounded-xl px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-accent-soft"
           >
             {item.label}
           </Link>

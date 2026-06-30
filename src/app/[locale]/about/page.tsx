@@ -26,31 +26,29 @@ export default async function AboutPage({ params }: PageProps) {
   const t = await getTranslations("about");
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <header className="mb-12">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-          {t("label")}
-        </p>
-        <h1 className="font-display text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-neutral-50">
+        <p className="section-label mb-4">{t("label")}</p>
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
           {t("title")}
         </h1>
       </header>
 
-      <div className="space-y-6 text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
+      <div className="space-y-6 text-lg leading-relaxed text-muted">
         <p>{t("p1")}</p>
         <p>{t("p2")}</p>
         <p>
           {t("p3Part1")}{" "}
           <Link
             href="/blog"
-            className="font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
+            className="font-medium text-accent underline underline-offset-4"
           >
             {t("insightsLink")}
           </Link>{" "}
           {t("p3Part2")}{" "}
           <Link
             href="/inventions"
-            className="font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
+            className="font-medium text-accent underline underline-offset-4"
           >
             {t("caseStudiesLink")}
           </Link>

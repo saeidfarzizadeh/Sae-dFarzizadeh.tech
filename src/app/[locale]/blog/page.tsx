@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PostCard } from "@/components/blog/PostCard";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { Locale } from "@/i18n/locales";
 import { getPublishedBlogs } from "@/lib/content";
 
@@ -30,18 +31,12 @@ export default async function BlogPage({ params }: PageProps) {
   const posts = getPublishedBlogs(locale);
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
-      <header className="mb-12 max-w-2xl">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-          {t("label")}
-        </p>
-        <h1 className="font-display text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-neutral-50">
-          {t("title")}
-        </h1>
-        <p className="mt-4 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-          {t("description")}
-        </p>
-      </header>
+    <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <SectionHeader
+        label={t("label")}
+        title={t("title")}
+        description={t("description")}
+      />
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (

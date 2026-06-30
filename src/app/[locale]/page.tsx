@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PostCard } from "@/components/blog/PostCard";
 import { PaperCard } from "@/components/papers/PaperCard";
+import { FeaturePanel } from "@/components/ui/FeaturePanel";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { Locale } from "@/i18n/locales";
 import {
   getPublishedBlogs,
@@ -32,6 +34,8 @@ export default async function HomePage({ params }: PageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
+  const tBlog = await getTranslations("blog");
+  const tInventions = await getTranslations("inventions");
   const tCommon = await getTranslations("common");
   const tStatus = await getTranslations("status");
   const latestPosts = getPublishedBlogs(locale).slice(0, 2);
@@ -41,51 +45,35 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <div>
-      <section className="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            {t("tagline")}
-          </p>
-          <h1 className="font-display max-w-4xl text-5xl font-semibold tracking-tight text-neutral-900 md:text-6xl dark:text-neutral-50">
+      <section className="hero-mesh">
+        <div className="hero-grid" />
+        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <p className="section-label mb-6">{t("tagline")}</p>
+          <h1 className="font-display max-w-4xl text-5xl font-semibold leading-[1.08] tracking-tight text-foreground md:text-6xl lg:text-7xl">
             {t("headline")}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
             {t("subtitle")}
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/blog"
-              className="rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
-            >
+          <div className="mt-11 flex flex-wrap gap-4">
+            <Link href="/blog" className="btn-primary">
               {t("readInsights")}
             </Link>
-            <Link
-              href="/inventions"
-              className="rounded-full border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-900"
-            >
+            <Link href="/inventions" className="btn-secondary">
               {t("exploreInventions")}
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-10 flex items-end justify-between gap-4">
-          <div>
-            <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
-              {t("latestInsights")}
-            </h2>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-              {t("latestInsightsDesc")}
-            </p>
-          </div>
-          <Link
-            href="/blog"
-            className="text-sm font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
-          >
-            {tCommon("viewAll")}
-          </Link>
-        </div>
+      <section className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+        <SectionHeader
+          label={tBlog("label")}
+          title={t("latestInsights")}
+          description={t("latestInsightsDesc")}
+          viewAllHref="/blog"
+          viewAllLabel={tCommon("viewAll")}
+        />
         <div className="grid gap-8 md:grid-cols-2">
           {latestPosts.map((post) => (
             <PostCard
@@ -103,24 +91,15 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="mb-10 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
-                {t("featuredInventions")}
-              </h2>
-              <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                {t("featuredInventionsDesc")}
-              </p>
-            </div>
-            <Link
-              href="/inventions"
-              className="text-sm font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
-            >
-              {tCommon("viewAll")}
-            </Link>
-          </div>
+      <section className="section-band">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <SectionHeader
+            label={tInventions("label")}
+            title={t("featuredInventions")}
+            description={t("featuredInventionsDesc")}
+            viewAllHref="/inventions"
+            viewAllLabel={tCommon("viewAll")}
+          />
           <div className="grid gap-8 md:grid-cols-2">
             {latestInventions.map((item) => (
               <PostCard
@@ -139,40 +118,37 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="rounded-3xl border border-neutral-200 bg-white p-10 dark:border-neutral-800 dark:bg-neutral-950">
-            <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
+          <FeaturePanel accent>
+            <h2 className="font-display text-3xl font-semibold text-foreground">
               {t("galleryTitle")}
             </h2>
-            <p className="mt-3 text-neutral-600 dark:text-neutral-400">
-              {t("galleryDesc")}
-            </p>
+            <p className="mt-3 text-muted">{t("galleryDesc")}</p>
             {latestGallery[0] ? (
-              <PostCard
-                href={`/gallery/${latestGallery[0].slug}`}
-                title={latestGallery[0].title}
-                description={latestGallery[0].description}
-                date={latestGallery[0].date}
-                locale={locale}
-                coverImage={latestGallery[0].coverImage}
-                meta={latestGallery[0].location}
-              />
+              <div className="mt-6">
+                <PostCard
+                  href={`/gallery/${latestGallery[0].slug}`}
+                  title={latestGallery[0].title}
+                  description={latestGallery[0].description}
+                  date={latestGallery[0].date}
+                  locale={locale}
+                  coverImage={latestGallery[0].coverImage}
+                  meta={latestGallery[0].location}
+                  compact
+                />
+              </div>
             ) : null}
-            <Link
-              href="/gallery"
-              className="mt-6 inline-block text-sm font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
-            >
+            <Link href="/gallery" className="link-fade mt-6 inline-block">
               {t("viewGallery")}
             </Link>
-          </div>
-          <div className="rounded-3xl border border-neutral-200 bg-white p-10 dark:border-neutral-800 dark:bg-neutral-950">
-            <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
+          </FeaturePanel>
+
+          <FeaturePanel>
+            <h2 className="font-display text-3xl font-semibold text-foreground">
               {t("papersTitle")}
             </h2>
-            <p className="mt-3 text-neutral-600 dark:text-neutral-400">
-              {t("papersDesc")}
-            </p>
+            <p className="mt-3 text-muted">{t("papersDesc")}</p>
             {latestPaper[0] ? (
               <div className="mt-6">
                 <PaperCard
@@ -187,30 +163,26 @@ export default async function HomePage({ params }: PageProps) {
                 />
               </div>
             ) : null}
-            <Link
-              href="/papers"
-              className="mt-6 inline-block text-sm font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
-            >
+            <Link href="/papers" className="link-fade mt-6 inline-block">
               {t("viewPapers")}
             </Link>
-          </div>
+          </FeaturePanel>
         </div>
       </section>
 
-      <section className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/40">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="font-display text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
-            {t("poetryTitle")}
-          </h2>
-          <p className="mt-3 max-w-2xl text-neutral-600 dark:text-neutral-400">
-            {t("poetryDesc")}
-          </p>
-          <Link
-            href="/poetry"
-            className="mt-6 inline-block text-sm font-medium text-neutral-900 underline underline-offset-4 dark:text-neutral-100"
-          >
-            {t("readPoetry")}
-          </Link>
+      <section className="section-band">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <FeaturePanel className="text-center">
+            <h2 className="font-display text-3xl font-semibold text-foreground md:text-4xl">
+              {t("poetryTitle")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted">
+              {t("poetryDesc")}
+            </p>
+            <Link href="/poetry" className="btn-secondary mt-8">
+              {t("readPoetry")}
+            </Link>
+          </FeaturePanel>
         </div>
       </section>
     </div>
