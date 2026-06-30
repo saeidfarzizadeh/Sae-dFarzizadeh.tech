@@ -1,0 +1,66 @@
+---
+title: "آرایه سنسور هوشمند"
+description: "احس لبه توزیع‌شده با فیوژن زیر میلی‌ثانیه برای محیط‌های صنعتی."
+date: 2025-11-02
+status: prototype
+techStack:
+  - Rust
+  - ESP32
+  - TensorFlow Lite
+coverImage: /images/inventions/sensor-array-hero.svg
+gallery:
+  - src: /images/inventions/sensor-pcb.svg
+    alt: "طرح PCB سفارشی"
+    caption: "PCB چهارلایه با خوشه IMU یکپارچه"
+  - src: /images/inventions/field-test.svg
+    alt: "استقرار میدانی"
+    caption: "نمونه اولیه نصب‌شده در محیط تست صنعتی"
+github: https://github.com
+demo: https://example.com
+published: true
+---
+
+## مسئله
+
+محیط‌های صنعتی به ادراک کم‌تأخیر و قابل‌اعتماد در گره‌های سنسور توزیع‌شده نیاز دارند. پردازش متمرکز گلوگاه ایجاد می‌کند؛ استنتاج ساده لبه نیز توان را روی محاسبات تکراری هدر می‌دهد.
+
+## معماری
+
+سامانه از خط لوله فیوژن سلسله‌مراتبی استفاده می‌کند: گره‌های محلی استخراج‌کننده‌های سبک اجرا می‌کنند و هماهنگ‌کننده فقط رویدادهای پراهمیت را تجمیع می‌کند.
+
+<ImageFigure
+  src="/images/inventions/architecture.svg"
+  alt="نمودار معماری سامانه"
+  caption="گره‌های لبه استنتاج محلی انجام می‌دهند؛ هماهنگ‌کننده فیوژن زمانی را مدیریت می‌کند."
+/>
+
+## نکات پیاده‌سازی
+
+```rust
+pub struct FusionNode {
+    imu: ImuDriver,
+    model: TfliteInterpreter,
+}
+
+impl FusionNode {
+    pub fn tick(&mut self) -> Option<Event> {
+        let frame = self.imu.sample()?;
+        let score = self.model.predict(&frame);
+        (score > self.threshold).then(|| Event::from(frame, score))
+    }
+}
+```
+
+## نتایج
+
+| معیار | قبل | بعد |
+| ----- | --- | --- |
+| تأخیر (p95) | 45ms | 2.1ms |
+| مصرف توان | 3.2W | 0.9W |
+| مثبت کاذب | 12% | 3% |
+
+## گام‌های بعدی
+
+- تقویت مسیر به‌روزرسانی firmware برای OTA
+- گسترش گردش کار کالیبراسیون برای دسته‌های ناهمگن سنسور
+- ثبت موقت اختراع برای الگوریتم زمان‌بندی فیوژن

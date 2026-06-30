@@ -1,0 +1,44 @@
+---
+title: "Transformer Dikkatini Anlamak"
+description: "Öz-dikkat mekanizmalarına görsel bir bakış ve ölçeklenme biçiminin nedenleri."
+date: 2026-03-15
+category: research
+tags:
+  - yapay zeka
+  - transformer
+  - derin öğrenme
+coverImage: /images/blog/transformers-cover.svg
+published: true
+---
+
+## Giriş
+
+Öz-dikkat, modellerin bir dizideki tüm token'lar arasındaki ilişkileri aynı anda ağırlıklandırmasını sağlar. Tekrarlayan mimarilerin aksine, transformer'lar sıralı hesaplamayı paralelleştirilebilir matris işlemleriyle değiştirir — dizi uzunluğunda karesel bellek maliyetiyle.
+
+<Callout type="insight">
+  Dikkat, dizi uzunluğuna göre O(n²) ölçeklenir. Seyrek dikkat, doğrusal dikkat ve durum uzayı modellerinin arkasındaki temel ölçekleme kısıtı budur.
+</Callout>
+
+## Temel Denklem
+
+Sorgu, anahtar ve değer matrisleriyle dikkat, ağırlıklar sorgu–anahtar benzerliğinden geldiğinde değerlerin ağırlıklı toplamını hesaplar:
+
+```python
+import torch
+
+def scaled_dot_product_attention(Q, K, V):
+    scores = torch.matmul(Q, K.transpose(-2, -1))
+    scores = scores / (Q.size(-1) ** 0.5)
+    weights = torch.softmax(scores, dim=-1)
+    return torch.matmul(weights, V)
+```
+
+## İcat Çalışmaları İçin Önemi
+
+Kenar yapay zeka sistemleri tasarlarken, dikkatin hesaplama profilini anlamak; damıtma, budama veya daha verimli alternatiflerle değiştirme kararını kolaylaştırır.
+
+## Daha Fazla Okuma
+
+- Orijinal "Attention Is All You Need" makalesi
+- Çok başlı dikkat için görsel rehberler
+- Kareden düşük dizi modelleri üzerine güncel çalışmalar

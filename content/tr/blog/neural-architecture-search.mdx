@@ -1,0 +1,31 @@
+---
+title: "Kenarda Sinir Ağı Mimarisi Arama"
+description: "Dağıtım donanımı sabitken pratik kısıtlar ve arama stratejileri."
+date: 2026-01-20
+category: tutorial
+tags:
+  - NAS
+  - kenar yapay zeka
+  - optimizasyon
+coverImage: /images/blog/nas-edge-cover.svg
+published: true
+---
+
+## Kısıt Odaklı Yaklaşım
+
+Bulut GPU'larda NAS genelde FLOPs bütçesi altında doğruluğu optimize eder. Gömülü donanımda asıl kısıtlar gecikme, bellek bant genişliği ve güç tüketimidir — çoğu zaman sert üst sınırlarla.
+
+## Pratik Arama Döngüsü
+
+1. Hedef cihazı temsili girdilerle profil çıkarın.
+2. Yalnızca parametre sayısı değil, gecikmeyle sınırlı arama alanı tanımlayın.
+3. Adaylar termal veya güç sınırlarını aştığında erken durdurun.
+4. Kazananları yalnızca benchmark veri kümelerinde değil, gerçek sensör akışlarında doğrulayın.
+
+<Callout type="info">
+  Kağıt üzerindeki en iyi mimari, saha koşullarında sürdürülebilir çıkarım yapamıyorsa değersizdir.
+</Callout>
+
+## Sonuç
+
+NAS'ı model yapısı ile dağıtım bağlamı arasında ortak tasarım problemi olarak görün. Arama alanı, donanımın gerçekten sürdürebildiğini kodlamalıdır.

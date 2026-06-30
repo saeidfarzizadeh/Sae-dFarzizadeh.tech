@@ -1,0 +1,35 @@
+---
+title: "Otonom Denetim İnsansız Hava Aracı"
+description: "Kapalı altyapı denetimi için görü ile yönlendirilen mikro İHA."
+date: 2025-08-14
+status: deployed
+techStack:
+  - Python
+  - ROS2
+  - ONNX Runtime
+  - OpenCV
+coverImage: /images/inventions/drone-hero.svg
+gallery:
+  - src: /images/inventions/drone-cad.svg
+    alt: "İHA gövdesi CAD render"
+    caption: "Korumalı pervaneli karbon fiber gövde"
+published: true
+---
+
+## Genel Bakış
+
+Kapalı endüstriyel alanlar — tanklar, kanallar, dar boşluklar — insan denetçiler için tehlikeli ve genel İHA'lar için zordur. Bu platform, görsel–ataksel odometriyi alana özgü bir kusur dedektörüyle birleştirir.
+
+## Temel Tasarım Kararları
+
+- **Duvara yakın uçuş için korumalı pervane geometrisi**
+- **Gecikmeyi önlemek için yerinde ONNX çıkarımı**
+- **Saha kitlerinde öngörülebilir başlatma için ROS2 yaşam döngüsü düğümleri**
+
+<Callout type="warning">
+  GPS'siz navigasyon, ışık ani değiştiğinde sürekli VIO yeniden kalibrasyonu gerektirir.
+</Callout>
+
+## Kazanımlar
+
+İki pilot tesiste, halatlı manuel yöntemlere kıyasla denetim duruş süresinde %40 azalma.

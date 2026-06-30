@@ -1,0 +1,44 @@
+---
+title: "Understanding Transformer Attention"
+description: "A visual walkthrough of self-attention mechanisms and why they scale the way they do."
+date: 2026-03-15
+category: research
+tags:
+  - ai
+  - transformers
+  - deep-learning
+coverImage: /images/blog/transformers-cover.svg
+published: true
+---
+
+## Introduction
+
+Self-attention allows models to weigh relationships across all tokens in a sequence simultaneously. Unlike recurrent architectures, transformers trade sequential computation for parallelizable matrix operations — at the cost of quadratic memory in sequence length.
+
+<Callout type="insight">
+  Attention is O(n²) in sequence length. This is the central scaling constraint behind sparse attention, linear attention, and state-space models.
+</Callout>
+
+## The Core Equation
+
+Given query, key, and value matrices, attention computes a weighted sum of values where weights come from query–key similarity:
+
+```python
+import torch
+
+def scaled_dot_product_attention(Q, K, V):
+    scores = torch.matmul(Q, K.transpose(-2, -1))
+    scores = scores / (Q.size(-1) ** 0.5)
+    weights = torch.softmax(scores, dim=-1)
+    return torch.matmul(weights, V)
+```
+
+## Why It Matters for Invention Work
+
+When designing edge AI systems, understanding attention's compute profile helps you decide whether to distill, prune, or replace attention layers entirely with more efficient alternatives.
+
+## Further Reading
+
+- The original "Attention Is All You Need" paper
+- Visual guides to multi-head attention
+- Recent work on sub-quadratic sequence models

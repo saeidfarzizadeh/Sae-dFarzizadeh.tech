@@ -1,0 +1,66 @@
+---
+title: "Akıllı Sensör Dizisi"
+description: "Endüstriyel ortamlar için dağıtık kenar algılama ve milisaniye altı sensör füzyonu."
+date: 2025-11-02
+status: prototype
+techStack:
+  - Rust
+  - ESP32
+  - TensorFlow Lite
+coverImage: /images/inventions/sensor-array-hero.svg
+gallery:
+  - src: /images/inventions/sensor-pcb.svg
+    alt: "Özel PCB yerleşimi"
+    caption: "Entegre IMU kümesiyle 4 katmanlı PCB"
+  - src: /images/inventions/field-test.svg
+    alt: "Saha kurulumu"
+    caption: "Endüstriyel test alanına monte prototip"
+github: https://github.com
+demo: https://example.com
+published: true
+---
+
+## Problem
+
+Endüstriyel ortamlar, dağıtık sensör düğümlerinde güvenilir ve düşük gecikmeli algılamaya ihtiyaç duyar. Merkezi işleme darboğaz yaratır; basit kenar çıkarımı ise gereksiz hesaplamayla güç israf eder.
+
+## Mimari
+
+Sistem hiyerarşik bir füzyon hattı kullanır: yerel düğümler hafif özellik çıkarıcıları çalıştırır, koordinatör yalnızca yüksek önemli olayları toplar.
+
+<ImageFigure
+  src="/images/inventions/architecture.svg"
+  alt="Sistem mimarisi diyagramı"
+  caption="Kenar düğümleri yerel çıkarım yapar; koordinatör zamansal füzyonu yönetir."
+/>
+
+## Uygulama Öne Çıkanları
+
+```rust
+pub struct FusionNode {
+    imu: ImuDriver,
+    model: TfliteInterpreter,
+}
+
+impl FusionNode {
+    pub fn tick(&mut self) -> Option<Event> {
+        let frame = self.imu.sample()?;
+        let score = self.model.predict(&frame);
+        (score > self.threshold).then(|| Event::from(frame, score))
+    }
+}
+```
+
+## Sonuçlar
+
+| Metrik | Önce | Sonra |
+| ------ | ---- | ----- |
+| Gecikme (p95) | 45ms | 2.1ms |
+| Güç tüketimi | 3.2W | 0.9W |
+| Yanlış pozitif | 12% | 3% |
+
+## Sonraki Adımlar
+
+- OTA dağıtımı için firmware güncelleme yolunu güçlendirmek
+- Heterojen sensör partileri için kalibrasyon akışını genişletmek
+- Füzyon zamanlama algoritması için geçici patent başvurusu

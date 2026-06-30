@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "siteTitle": "Portfolio & Blog",
+    "siteDescription": "Professional portfolio, AI research insights, invention case studies, and poetry.",
+    "titleTemplate": "%s · Portfolio & Blog"
+  },
+  "nav": {
+    "home": "Home",
+    "insights": "Insights",
+    "inventions": "Inventions",
+    "poetry": "Poetry",
+    "gallery": "Gallery",
+    "papers": "Papers",
+    "about": "About",
+    "menu": "Menu",
+    "brand": "Portfolio"
+  },
+  "common": {
+    "viewAll": "View all",
+    "minRead": "{minutes} min read",
+    "noCoverImage": "No cover image",
+    "viewOnGithub": "View on GitHub",
+    "liveDemo": "Live Demo",
+    "gallery": "Gallery",
+    "techStack": "Tech Stack",
+    "doi": "DOI"
+  },
+  "status": {
+    "concept": "Concept",
+    "prototype": "Prototype",
+    "patented": "Patented",
+    "deployed": "Deployed"
+  },
+  "category": {
+    "research": "Research",
+    "tutorial": "Tutorial",
+    "opinion": "Opinion"
+  },
+  "home": {
+    "tagline": "Researcher · Inventor · Writer",
+    "headline": "Building intelligent systems and documenting the journey.",
+    "subtitle": "A professional portfolio and publishing platform for AI research, invention case studies, technical writing, and creative work — powered by MDX and Content Collections.",
+    "readInsights": "Read Insights",
+    "exploreInventions": "Explore Inventions",
+    "latestInsights": "Latest Insights",
+    "latestInsightsDesc": "AI research notes and technical essays.",
+    "featuredInventions": "Featured Inventions",
+    "featuredInventionsDesc": "Case studies combining architecture, code, and results.",
+    "poetryTitle": "Poetry & Creative Writing",
+    "poetryDesc": "A dedicated space for verse and reflective writing — structured exactly like blog posts, with its own collection and route.",
+    "readPoetry": "Read poetry →",
+    "galleryTitle": "Photo Gallery",
+    "galleryDesc": "Curated albums with responsive grids and optimized imagery.",
+    "viewGallery": "Browse gallery →",
+    "papersTitle": "Academic Papers",
+    "papersDesc": "Peer-reviewed publications with DOI links and downloadable PDFs.",
+    "viewPapers": "Read papers →"
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Insights",
+    "description": "Research notes on AI systems, experiments, and the ideas behind my inventions.",
+    "metaDescription": "AI research, technical essays, and invention notes."
+  },
+  "inventions": {
+    "label": "Portfolio",
+    "title": "Invention Case Studies",
+    "description": "Deep dives into systems I have designed — from problem framing to implementation details and measured outcomes.",
+    "metaDescription": "Project and invention case studies with architecture and code."
+  },
+  "gallery": {
+    "label": "Visual",
+    "title": "Photo Gallery",
+    "description": "Curated photography albums with clean grid layouts and fast, optimized delivery.",
+    "metaDescription": "Photography albums and visual collections.",
+    "photoCount": "{count, plural, one {# photo} other {# photos}}"
+  },
+  "papers": {
+    "label": "Academic",
+    "title": "Research Papers",
+    "description": "Peer-reviewed publications, preprints, and technical reports.",
+    "metaDescription": "Academic papers and research publications.",
+    "authors": "Authors",
+    "journal": "Journal",
+    "publishedOn": "Published",
+    "downloadPdf": "Download PDF"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "errors": {
+    "postNotFound": "Post not found",
+    "poemNotFound": "Poem not found",
+    "paperNotFound": "Paper not found",
+    "albumNotFound": "Album not found",
+    "caseStudyNotFound": "Case study not found"
+  },
+  "poetry": {
+    "label": "Creative",
+    "title": "Poetry",
+    "description": "Verse, fragments, and reflective writing in a typographic layout designed for slow reading.",
+    "metaDescription": "Poems and creative writing."
+  },
+  "about": {
+    "label": "Profile",
+    "title": "About",
+    "metaDescription": "About this portfolio and publishing platform.",
+    "p1": "This site is a unified publishing platform for my professional work: AI research essays, invention case studies, creative writing, photo galleries, and academic papers — all authored in Markdown/MDX and rendered through Next.js.",
+    "p2": "Content lives in the content/ directory. Each category (blog, inventions, poetry, gallery, papers) maps to its own collection schema and route. Adding a new section only requires a new folder, schema, and page template.",
+    "p3Part1": "Explore the latest",
+    "p3Part2": "or browse",
+    "p3Part3": ".",
+    "insightsLink": "insights",
+    "caseStudiesLink": "invention case studies"
+  },
+  "footer": {
+    "copyright": "Portfolio & Blog",
+    "builtWith": "Built with Next.js, MDX & Content Collections"
+  },
+  "language": {
+    "label": "Language"
+  }
+}

@@ -1,0 +1,35 @@
+---
+title: "Autonomous Inspection Drone"
+description: "Vision-guided micro-drone for confined-space infrastructure inspection."
+date: 2025-08-14
+status: deployed
+techStack:
+  - Python
+  - ROS2
+  - ONNX Runtime
+  - OpenCV
+coverImage: /images/inventions/drone-hero.svg
+gallery:
+  - src: /images/inventions/drone-cad.svg
+    alt: "CAD render of drone frame"
+    caption: "Carbon fiber frame with protected rotors"
+published: true
+---
+
+## Overview
+
+Confined industrial spaces — tanks, ducts, crawl spaces — are dangerous for human inspectors and challenging for generic drones. This platform combines visual-inertial odometry with a domain-specific defect detector.
+
+## Key Design Decisions
+
+- **Protected rotor geometry** for wall proximity flight
+- **Onboard ONNX inference** to avoid video uplink latency
+- **ROS2 lifecycle nodes** for predictable startup in field kits
+
+<Callout type="warning">
+  GPS-denied navigation requires continuous VIO recalibration when lighting changes abruptly.
+</Callout>
+
+## Outcomes
+
+Deployed in two pilot facilities with a 40% reduction in inspection downtime compared to manual rope-access methods.

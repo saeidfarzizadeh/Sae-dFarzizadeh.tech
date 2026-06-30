@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "siteTitle": "Portfolyo ve Blog",
+    "siteDescription": "Profesyonel portfolyo, yapay zeka araştırma yazıları, icat vaka çalışmaları ve şiir.",
+    "titleTemplate": "%s · Portfolyo ve Blog"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "insights": "İçgörüler",
+    "inventions": "İcatlar",
+    "poetry": "Şiir",
+    "gallery": "Galeri",
+    "papers": "Makaleler",
+    "about": "Hakkımda",
+    "menu": "Menü",
+    "brand": "Portfolyo"
+  },
+  "common": {
+    "viewAll": "Tümünü gör",
+    "minRead": "{minutes} dk okuma",
+    "noCoverImage": "Kapak görseli yok",
+    "viewOnGithub": "GitHub'da görüntüle",
+    "liveDemo": "Canlı demo",
+    "gallery": "Galeri",
+    "techStack": "Teknoloji yığını",
+    "doi": "DOI"
+  },
+  "status": {
+    "concept": "Konsept",
+    "prototype": "Prototip",
+    "patented": "Patentli",
+    "deployed": "Yayında"
+  },
+  "category": {
+    "research": "Araştırma",
+    "tutorial": "Eğitim",
+    "opinion": "Görüş"
+  },
+  "home": {
+    "tagline": "Araştırmacı · Mucit · Yazar",
+    "headline": "Akıllı sistemler inşa ediyor ve bu yolculuğu belgeliyorum.",
+    "subtitle": "Yapay zeka araştırmaları, icat vaka çalışmaları, teknik yazılar ve yaratıcı eserler için profesyonel bir portfolyo ve yayıncılık platformu — MDX ve Content Collections ile.",
+    "readInsights": "İçgörüleri oku",
+    "exploreInventions": "İcatları keşfet",
+    "latestInsights": "Son içgörüler",
+    "latestInsightsDesc": "Yapay zeka araştırma notları ve teknik makaleler.",
+    "featuredInventions": "Öne çıkan icatlar",
+    "featuredInventionsDesc": "Mimari, kod ve ölçülebilir sonuçları bir araya getiren vaka çalışmaları.",
+    "poetryTitle": "Şiir ve yaratıcı yazı",
+    "poetryDesc": "Şiir ve düşünsel yazılar için ayrılmış bir alan — blog yazılarıyla aynı yapıda, kendi koleksiyonu ve rotasıyla.",
+    "readPoetry": "Şiiri oku →",
+    "galleryTitle": "Fotoğraf galerisi",
+    "galleryDesc": "Duyarlı ızgaralar ve optimize görsellerle seçilmiş albümler.",
+    "viewGallery": "Galeriye göz at →",
+    "papersTitle": "Akademik makaleler",
+    "papersDesc": "DOI bağlantılı ve indirilebilir PDF'li hakemli yayınlar.",
+    "viewPapers": "Makaleleri oku →"
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "İçgörüler",
+    "description": "Yapay zeka sistemleri, deneyler ve icatlarımın arkasındaki fikirler hakkında araştırma notları.",
+    "metaDescription": "Yapay zeka araştırmaları, teknik makaleler ve icat notları."
+  },
+  "inventions": {
+    "label": "Portfolyo",
+    "title": "İcat vaka çalışmaları",
+    "description": "Tasarladığım sistemlere derinlemesine bakış — problem tanımından uygulama ayrıntılarına ve ölçülen sonuçlara.",
+    "metaDescription": "Mimari ve kod içeren proje ve icat vaka çalışmaları."
+  },
+  "gallery": {
+    "label": "Görsel",
+    "title": "Fotoğraf galerisi",
+    "description": "Temiz ızgara düzenleri ve hızlı, optimize teslimatla seçilmiş fotoğraf albümleri.",
+    "metaDescription": "Fotoğraf albümleri ve görsel koleksiyonlar.",
+    "photoCount": "{count, plural, one {# fotoğraf} other {# fotoğraf}}"
+  },
+  "papers": {
+    "label": "Akademik",
+    "title": "Araştırma makaleleri",
+    "description": "Hakemli yayınlar, ön baskılar ve teknik raporlar.",
+    "metaDescription": "Akademik makaleler ve araştırma yayınları.",
+    "authors": "Yazarlar",
+    "journal": "Dergi",
+    "publishedOn": "Yayın tarihi",
+    "downloadPdf": "PDF indir"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Sayfa bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "backHome": "Ana sayfaya dön"
+  },
+  "errors": {
+    "postNotFound": "Yazı bulunamadı",
+    "poemNotFound": "Şiir bulunamadı",
+    "paperNotFound": "Makale bulunamadı",
+    "albumNotFound": "Albüm bulunamadı",
+    "caseStudyNotFound": "Vaka çalışması bulunamadı"
+  },
+  "poetry": {
+    "label": "Yaratıcı",
+    "title": "Şiir",
+    "description": "Yavaş okumaya uygun tipografik düzende şiir, kısa parçalar ve düşünsel yazılar.",
+    "metaDescription": "Şiir ve yaratıcı yazılar."
+  },
+  "about": {
+    "label": "Profil",
+    "title": "Hakkımda",
+    "metaDescription": "Bu portfolyo ve yayıncılık platformu hakkında.",
+    "p1": "Bu site, profesyonel çalışmalarım için birleşik bir yayıncılık platformudur: yapay zeka araştırma makaleleri, icat vaka çalışmaları, yaratıcı yazılar, fotoğraf galerileri ve akademik makaleler — hepsi Markdown/MDX ile yazılıp Next.js üzerinden sunulur.",
+    "p2": "İçerik content/ dizininde yer alır. Her kategori (blog, icatlar, şiir, galeri, makaleler) kendi şema ve rotasına bağlıdır. Yeni bir bölüm eklemek yalnızca yeni klasör, şema ve sayfa şablonu gerektirir.",
+    "p3Part1": "En son",
+    "p3Part2": "okuyun veya",
+    "p3Part3": "inceleyin.",
+    "insightsLink": "içgörüler",
+    "caseStudiesLink": "icat vaka çalışmaları"
+  },
+  "footer": {
+    "copyright": "Portfolyo ve Blog",
+    "builtWith": "Next.js, MDX ve Content Collections ile geliştirildi"
+  },
+  "language": {
+    "label": "Dil"
+  }
+}

@@ -1,0 +1,66 @@
+---
+title: "Smart Sensor Array"
+description: "Distributed edge sensing with sub-millisecond sensor fusion for industrial environments."
+date: 2025-11-02
+status: prototype
+techStack:
+  - Rust
+  - ESP32
+  - TensorFlow Lite
+coverImage: /images/inventions/sensor-array-hero.svg
+gallery:
+  - src: /images/inventions/sensor-pcb.svg
+    alt: "Custom PCB layout"
+    caption: "4-layer PCB with integrated IMU cluster"
+  - src: /images/inventions/field-test.svg
+    alt: "Field deployment"
+    caption: "Prototype mounted in an industrial test bay"
+github: https://github.com
+demo: https://example.com
+published: true
+---
+
+## Problem
+
+Industrial environments need reliable, low-latency perception across distributed sensor nodes. Centralized processing introduces bottlenecks; naive edge inference wastes power on redundant computation.
+
+## Architecture
+
+The system uses a hierarchical fusion pipeline: local nodes run lightweight feature extractors, while a coordinator aggregates only high-salience events.
+
+<ImageFigure
+  src="/images/inventions/architecture.svg"
+  alt="System architecture diagram"
+  caption="Edge nodes perform local inference; the coordinator handles temporal fusion."
+/>
+
+## Implementation Highlights
+
+```rust
+pub struct FusionNode {
+    imu: ImuDriver,
+    model: TfliteInterpreter,
+}
+
+impl FusionNode {
+    pub fn tick(&mut self) -> Option<Event> {
+        let frame = self.imu.sample()?;
+        let score = self.model.predict(&frame);
+        (score > self.threshold).then(|| Event::from(frame, score))
+    }
+}
+```
+
+## Results
+
+| Metric        | Before | After |
+| ------------- | ------ | ----- |
+| Latency (p95) | 45ms   | 2.1ms |
+| Power draw    | 3.2W   | 0.9W  |
+| False positives | 12%  | 3%    |
+
+## Next Steps
+
+- Harden firmware update path for OTA deployment
+- Expand calibration workflow for heterogeneous sensor batches
+- File provisional patent on fusion scheduling algorithm

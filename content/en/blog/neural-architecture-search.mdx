@@ -1,0 +1,31 @@
+---
+title: "Neural Architecture Search at the Edge"
+description: "Practical constraints and search strategies when deployment hardware is fixed."
+date: 2026-01-20
+category: tutorial
+tags:
+  - nas
+  - edge-ai
+  - optimization
+coverImage: /images/blog/nas-edge-cover.svg
+published: true
+---
+
+## The Constraint-First Mindset
+
+Neural Architecture Search (NAS) on cloud GPUs optimizes for accuracy under a FLOPs budget. On embedded hardware, the real constraints are latency, memory bandwidth, and power draw — often with hard upper bounds.
+
+## A Practical Search Loop
+
+1. Profile the target device with representative inputs.
+2. Define a searchable space bounded by latency, not just parameter count.
+3. Use early stopping when candidates violate thermal or power envelopes.
+4. Validate winners on real sensor streams, not only benchmark datasets.
+
+<Callout type="info">
+  The best architecture on paper is worthless if it cannot sustain inference under field conditions.
+</Callout>
+
+## Takeaway
+
+Treat NAS as a co-design problem between model structure and deployment context. The search space should encode what the hardware can actually sustain.
